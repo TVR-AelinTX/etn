@@ -16,14 +16,14 @@
     4.4. [❌ Deal with compressed data HPLC files](#task4)   
     4.5. [✔️ Exploration raw UPLC data](#task5)   
     4.6. [✔️ Align on need for UPLC data upload format](#task6)   
-    4.7. [🔲 Meta-Analysis UPLC data](#task7)    
+    4.7. [❌ Meta-Analysis UPLC data](#task7)    
     4.8. [✔️ Upload Ion Chromatography data](#task8)     
     4.9. [✔️ Generate PDFs from UPLC data](#task9)       
     4.10. [✔️ Add inhouse IC data to pdf generation](#task10)       
     4.11. [✔️ Establish IC data as new cannical type on DELPHI](#task11)         
-    4.12. [🔲Membrane Assay Preprocessing and analysis](#task12)        
+    4.12. [✔️Membrane Assay Preprocessing and analysis](#task12)        
     4.13. [✔️ Batch mass /volume calculator app](#task13)       
-    4.14. [ Net Peptide Content Upload](#task14)
+    4.14. [✔️Net Peptide Content Upload](#task14)
 
 [//]: # (Intermediate Evaluation Traineeship)
 
@@ -362,12 +362,14 @@ The code was further refactored and prepared for a first test in the sandbox env
 ### 24/05/2022:
 
 An upgrade of pandas was performed on the sandbox environment to test if this would solve the issue, but it broke other pieces of the DELPHI code. Therefore it was decided to momentarily cut the plate syntax functionality from the platereader for the time being and reset to pandas v1.1.3.
-The rest of the code ran fine under the old pandas version and the tempaltes for displaying the output on DELHI were configured.
+The rest of the code ran fine under the old pandas version and the templates for displaying the output on DELHI were configured.
 
 ### 31/05/2022:
 
 The summary plots were made dynamically using plotly. Poorly behaving curves (significantly higher standard deviation than the average) were plotted as dashed lines (to indicate they are not used in further calculation) and then hidden by default.
 The user can click the concentration of these plots to set them to visible, should they want a summary plot that does show these curves.
+
+The plate syntax functionality was wrapped in a tkinter dialog script and compiled to a .exe usable by the scientists with pyinstaller.
 
 
 ## Batch mass /volume calculator app <a name="task13"></a>
@@ -388,7 +390,7 @@ Code injection could be kept to a minimum by inserting the calculator as an ifra
 <iframe src="https://htmlpreview.github.io/?https://github.com/TVR-AelinTX/calc_example/blob/main/calc.html?mw=2000&npc=0.75" scrolling='no' style="border: none;" height='400px' width="500px"></iframe>
 [source code](https://github.com/TVR-AelinTX/traineeship/blob/main/batch_calculator/Calculator.html)
 
-## Net Peptide Content Uplaod <a name="task14"></a>
+## Net Peptide Content Upload <a name="task14"></a>
 
 ### 27/05/2022:
 
@@ -401,7 +403,7 @@ A timestamp system is set up to keep track of the current and previous NPC value
 
 The calculator was tested to see if the npc data was added as a query to the html string in the correct batches.
 
-###07/06/2022:
+### 07/06/2022:
 
 NPC measurements can be done at two different moments. Before aliquotation of the batch by lyophilization and after this lyophilization. For calculation purposes the first can only be used if a whole vial of peptide (generally 4mgs is dissolved, while the latter is used if manual wheighing is performed to dissolve a known quantity of peptin.
 The code was refactored to take into account this distinction and save two npc values per batch. 
