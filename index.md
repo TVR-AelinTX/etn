@@ -20,10 +20,10 @@
     4.8. [✔️ Upload Ion Chromatography data](#task8)     
     4.9. [✔️ Generate PDFs from UPLC data](#task9)       
     4.10. [✔️ Add inhouse IC data to pdf generation](#task10)       
-    4.11. [✔️ Establish IC data as new cannonical type on DELPHI](#task11)         
+    4.11. [✔️ Establish IC data as new cannical type on DELPHI](#task11)         
     4.12. [🔲Membrane Assay Preprocessing and analysis](#task12)        
     4.13. [✔️ Batch mass /volume calculator app](#task13)       
-
+    4.14. [ Net Peptide Content Upload](#task14)
 
 [//]: # (Intermediate Evaluation Traineeship)
 
@@ -284,7 +284,7 @@ The script for handling the IC data was incorporated into DELPHI and tested on t
 
 Incorporation of the IC data into the generated PDFs. Formatting of the figures and pdf.
 
-## Establish IC data as new cannonical type on DELPHI <a name="task11"></a>
+## Establish IC data as new canonical type on DELPHI <a name="task11"></a>
 
 ### 29/03/2022:
 
@@ -355,11 +355,19 @@ This logistic regression fit was coded in python using scipy.optimize's curve_fi
 The plate reader part of the script was refactored to the visitor level, using a new data structure to uniformize the processing of plate assay data further. Mathias had written the visitor as an variant of the standard template visitor used in DELPHI. 
 The visitor was modified with rules on how to deduce which type of plate is used and how to process the raw data file by scraping the metadata.
 
-### 19/05/2022
+### 19/05/2022:
 
-The code was prepared for a first test in the sandbox environment. Inconsistencies were found during testing between output on the sandbox and local testing. After some searching the plate syntax part of the code seemed to be the culprit as it was using the pandas.explode function on multiple columns. This feature was released in pandas v1.3, while the pandas version running on production and sandbox was pandas 1.1.3.
-An upgrade of pandas was performed to test if this would solve the issue, but it broke other pieces of the code. Therefore it was decided to momentarily cut the plate syntax functionality from the platereader for the time being and reset to pandas v1.1.3.
+The code was further refactored and prepared for a first test in the sandbox environment. Inconsistencies were found during testing between output on the sandbox and local testing. After some searching the plate syntax part of the code seemed to be the culprit as it was using the pandas.explode function on multiple columns. This feature was released in pandas v1.3, while the pandas version running on production and sandbox was pandas 1.1.3.
 
+### 24/05/2022:
+
+An upgrade of pandas was performed on the sandbox environment to test if this would solve the issue, but it broke other pieces of the DELPHI code. Therefore it was decided to momentarily cut the plate syntax functionality from the platereader for the time being and reset to pandas v1.1.3.
+The rest of the code ran fine under the old pandas version and the tempaltes for displaying the output on DELHI were configured.
+
+### 31/05/2022:
+
+The summary plots were made dynamically using plotly. Poorly behaving curves (significantly higher standard deviation than the average) were plotted as dashed lines (to indicate they are not used in further calculation) and then hidden by default.
+The user can click the concentration of these plots to set them to visible, should they want a summary plot that does show these curves.
 
 
 ## Batch mass /volume calculator app <a name="task13"></a>
@@ -379,6 +387,26 @@ Code injection could be kept to a minimum by inserting the calculator as an ifra
 #### Interactive example
 <iframe src="https://htmlpreview.github.io/?https://github.com/TVR-AelinTX/calc_example/blob/main/calc.html?mw=2000&npc=0.75" scrolling='no' style="border: none;" height='400px' width="500px"></iframe>
 [source code](https://github.com/TVR-AelinTX/traineeship/blob/main/batch_calculator/Calculator.html)
+
+## Net Peptide Content Uplaod <a name="task14"></a>
+
+### 27/05/2022:
+
+Measurements of the net peptide content per batch are being performed recently. This data could be added to the batch calculator to take this peptide content into account per specific batch for molarity calculations.
+The data needs to be uploaded to DELPHI for the batch calculator tool to use these values in the iframe. A simple upload tempalte was deviced that does some data validation and then prioritizes certain NPC methods of measuring above others (due to higher accuracy of the measurements method) to assign an NPC value to a batch based on which measurements are uploaded.
+The priority of the methods was set up as follows KF > AAA > UPLC
+A timestamp system is set up to keep track of the current and previous NPC values per batch. This way a previously calculated molarity can be recalculated if new, more accurate and deviating NPC values are obtained.
+
+### 31/05/2022:
+
+The calculator was tested to see if the npc data was added as a query to the html string in the correct batches.
+
+###07/06/2022:
+
+NPC measurements can be done at two different moments. Before aliquotation of the batch by lyophilization and after this lyophilization. For calculation purposes the first can only be used if a whole vial of peptide (generally 4mgs is dissolved, while the latter is used if manual wheighing is performed to dissolve a known quantity of peptin.
+The code was refactored to take into account this distinction and save two npc values per batch. 
+Additional code was written to take into account KF measurements, where the water content is measured. Combining this water content with IC data from a batch the NPC should equal 1 - %IC ions - %water by KF.
+
 
 [//]: # (Intermediate Evaluation Traineeship)
 
