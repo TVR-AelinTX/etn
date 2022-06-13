@@ -242,12 +242,12 @@ An automated method to generate certificates of analysis from the data obtained 
 The backbones for the script are tested out and written in [this jupyter notebook](https://github.com/TVR-AelinTX/traineeship/blob/main/data_exploration/UPLC/UPLC%20DATA%20exploration.ipynb). The means to extract the raw data from .txt files are written and a first small pdf was generated.
 
 ### 03/03/2022:
-A more thorough pdf generation backbone script was made using reportlab. It takes variables from the delphi tables to supplement the raw data with other compound and batch related properties.
+A [more thorough pdf generation backbone script](https://github.com/TVR-AelinTX/traineeship/blob/main/uplc/pdf_report.py) was made using reportlab. It takes variables from the delphi tables to supplement the raw data with other compound and batch related properties.
 
 ### 07/03/2022:
-Incorporation of pieces of the code into DELPHI started. The process is as follows: a visitor script will scrape the ELN for new raw UPLC data (posted in a monthly folder) and retrieve relevant data needed for the report. It will also generate a chromatogram and save it to the server to be displayed on DELPHI and included in the report.
+Incorporation of pieces of the code into DELPHI started. The process is as follows: a [visitor script](https://github.com/TVR-AelinTX/traineeship/blob/main/uplc/delphi_scripts/uplc_qc.py) will scrape the ELN for new raw UPLC data (posted in a monthly folder) and retrieve relevant data needed for the report. It will also generate a chromatogram and save it to the server to be displayed on DELPHI and included in the report.
 
-After this, an operation will join tables from batches, compounds and the uplc data to get all the relevant data for the report. This data is then fed to a function that generates the report. The function is wrapped by a method that keeps track of any changes and only runs the code when there are changes. 
+After this, an [operation script](https://github.com/TVR-AelinTX/traineeship/blob/main/uplc/delphi_scripts/gen_batch_qc_reports.py) will join tables from batches, compounds and the uplc data to get all the relevant data for the report. This data is then fed to a function that generates the report. The function is wrapped by a method that keeps track of any changes and only runs the code when there are changes. 
 
 ### 10/03/2022:
 The pdf generation was further polished and formatting was adapted to ammeliorate more extreme input data (eg. large integration tables).
@@ -267,18 +267,18 @@ The code was wrapped in some error handling to report different parts of the cod
 ## Add inhouse IC data to pdf generation <a name="task10"></a>
 
 ### 21/03/2022:
-The Ion Chromatography data was explored initially. The program used to process and export the IC data, Chromeleon, is the same as for the UPLC. This way a similar workflow could be set up to get the data exported to the server and read in by Delphi.
+The Ion Chromatography data was explored initially in [a jupyter notebook](https://github.com/TVR-AelinTX/traineeship/tree/main/data_exploration/IC). The program used to process and export the IC data, Chromeleon, is the same as for the UPLC. This way a similar workflow could be set up to get the data exported to the server and read in by Delphi.
 
 Some settings needed to be changed on the Chromeleon software to allow a one-click export by the user. Structure of the saved runs was also copied to that of the UPLC data, for inner consistency.
 
 ### 24/03/2022:
 A bash script was written to transfer the data exported to the backport in the server to a permanent place in the server. During transfer an '_ic' metatag is added to the filenames.
 
-Further preprocessing of the IC data was worked on in a jupyter notebook.
+Further preprocessing of the IC data was worked on in the jupyter notebook.
 
 ### 29/03/2022:
 
-The script for handling the IC data was incorporated into DELPHI and tested on the sandbox.
+The [script for handling the IC data](https://github.com/TVR-AelinTX/traineeship/blob/main/ion_chrom/ic_qc.py) was incorporated into DELPHI and tested on the sandbox.
 
 ### 07/04/2022:
 
@@ -288,7 +288,7 @@ Incorporation of the IC data into the generated PDFs. Formatting of the figures 
 
 ### 29/03/2022:
 
-It was decided to make the IC data their own category of data on DELPHI, to accomodate comparison of different measurements (on different dates, different technical replicates or from different sources). Code was refactored to create this new cannonical type and add the IC data to it.
+It was decided to make the IC data their own category of data on DELPHI, to accomodate comparison of different measurements (on different dates, different technical replicates or from different sources). The masterdata was set up to create this new cannonical type and an [operation](https://github.com/TVR-AelinTX/traineeship/blob/main/ion_chrom/import_dlph_ic_data.py) was written to preprocess and add the IC data to it.
 
 ### 31/03/2022:
 
@@ -306,7 +306,7 @@ The IC data standard curves were polished and a typo in the parameters of the sc
 
 ### 14/04/2022:
 
-It was proposed to have a look at membrane disruption data for the second half of the internship as the pdf generation project was comming to an end. The experiments are done in 96 well plates. Data needed for these experiments comes from two sources that should be linked to eachother: the raw data with the absorbance readings of the experiment and then some sort of template to be designed that indicates what sample corresponds to which well. 
+It was proposed to have a look at membrane disruption data for the second half of the internship as the pdf generation project was comming to an end. The experiments are done in 96 well plates. Data needed for these experiments comes from two sources that should be linked to eachother: the raw data with the absorbance readings of the experiment and then some sort of template to be designed that indicates what sample corresponds to which well. Some data exploration was done in [this notebook](https://github.com/TVR-AelinTX/traineeship/blob/main/data_exploration/membrane_leakage/membrane_assay.ipynb).
 
 ### 19/04/2022:
 
@@ -319,7 +319,7 @@ Combining these with dilution series of the same length, a pandas explode forms 
 
 ### 21/04/2022:
 
-Plots were generated of the test data. Data was grouped per compound, concentration and batch and then the means of the replicates was used for plotting. A script was wrtitten that plots per compound the different concentrations in another color and displays the sample with the max absorbance (lysed membrane) and a negative control (membrane without disruption).
+Plots were generated of the test data. Data was grouped per compound, concentration and batch and then the means of the replicates was used for plotting. A script was written that plots per compound the different concentrations in another color and displays the sample with the max absorbance (lysed membrane) and a negative control (membrane without disruption).
 
 ### 26/04/2022:
 
@@ -368,6 +368,7 @@ The rest of the code ran fine under the old pandas version and the templates for
 
 The summary plots were made dynamically using plotly. Poorly behaving curves (significantly higher standard deviation than the average) were plotted as dashed lines (to indicate they are not used in further calculation) and then hidden by default.
 The user can click the concentration of these plots to set them to visible, should they want a summary plot that does show these curves.
+The final code can be found [here](https://github.com/TVR-AelinTX/traineeship/blob/main/membrane_assay/import_dlph_membrane_disruption.py)
 
 The plate syntax functionality was wrapped in a tkinter dialog script and compiled to a .exe usable by the scientists with pyinstaller.
 
@@ -407,7 +408,8 @@ The calculator was tested to see if the npc data was added as a query to the htm
 
 NPC measurements can be done at two different moments. Before aliquotation of the batch by lyophilization and after this lyophilization. For calculation purposes the first can only be used if a whole vial of peptide (generally 4mgs is dissolved, while the latter is used if manual wheighing is performed to dissolve a known quantity of peptin.
 The code was refactored to take into account this distinction and save two npc values per batch. 
-Additional code was written to take into account KF measurements, where the water content is measured. Combining this water content with IC data from a batch the NPC should equal 1 - %IC ions - %water by KF.
+Additional code was written to take into account KF measurements, where the water content is measured. Combining this water content with IC data from a batch the NPC should equal 100% deducted by the % of ions measured by IC and the water content % by Karl Fisher.
+The final code can be found [here](https://github.com/TVR-AelinTX/traineeship/blob/main/npc_upload/import_dlph_npc_data.py)
 
 
 [//]: # (Intermediate Evaluation Traineeship)
