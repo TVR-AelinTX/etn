@@ -9,6 +9,8 @@
 2. [Background information traineeship topic](#background)  
 3. [Reflection and self-directed behaviour](#refl)  
     3.1 [Personal Development](#pers-dev)   
+    3.2 [Formative evaluation](#from-ev)
+    3.3 [Critical Reflection](#crit-refl)
 4. [Tasks](#tasks)  
     4.1. [✔️ Exploration of raw data formats from HPLC instrument](#task1)   
     4.2. [✔️ Download and install DELPHI repository](#task2)     
@@ -25,11 +27,6 @@
     4.13. [✔️ Batch mass /volume calculator app](#task13)       
     4.14. [✔️Net Peptide Content Upload](#task14)
 
-[//]: # (Intermediate Evaluation Traineeship)
-
-[//]: # (Self Assessment at the End of Traineeship)
-
-[//]: # (Reflection on International/Intercultural Aspects)
 # Traineeship Documentation Plan <a name="TDP"></a>
 
 ## Tentative Planning <a name="TDP1"></a>
@@ -113,6 +110,72 @@ The different activities run in parallel as they're heavily intertwined and give
 
 Feedback is given when needed or whenever I feel stuck with a certain problem by the external coordinator. The course units of BIT provide support in handling issues (eg: Databases & Data Management, Python Scripting, Data Visualization).
 
+## Formative Evaluation <a name="form-dev"></a>
+
+**Feedback during traineeship**
+
+- Testing, testing, testing: Test the code more often and early. Ideally after every piece of code that is added which changes something. 
+- Expect the unexpected: When validating data from user input, try to be prepared for any format or type of typo's/errors and try to find ways to enforce data validation during data entry and some post-entry data cleanup routines.
+- Communicate with the stakeholders: I've kept the stakehoders in the loop of the status of the project, so that any ideas or changes to the format could be implemented early on and there were no surprises in delivery of the project un terms of content or timeline.
+
+**Intermediate Evaluation Form**
+
+The evaluation was as expected, getting to know DELPHI went smooth and I could work on the different projects quite independently.
+In the second part of the traineeship I would like to ramp up the difficulty and combine python programming with some JavaScript for making some front end changes on the DELPHI user interface. 
+
+## Critical Reflection <a name="crit-refl"></a>
+
+**Self-assesment**
+
+- LO1:
+    - Applies relevant programming techniques to process (biological) information in an automated manner: 
+	Excellent. In the code written, many different python libraries are used. Some of which were known to me, others I had got to know during the traineeship. 
+    - Programmes as efficient as possible: 
+	Good. I try to tackle problems in the most efficient way possible, but need more experience and could time functions or test out different aproaches to make sure it is the most efficient method.
+- LO2:
+    - Efficiently and critically adjusts the structure of a self-developed or existing program: 
+	Good. I can improve previous code upon reflection and with some testing, as I've done many times during the traineeship.  
+    - Efficiently and critically adjusts the structure and the content of a given (biological) data file: 
+	Excellent. Many files had to be read, stored into pandas DataFrames and preprocessed during the traineeship.
+- LO3:
+    - Autonomously selects and deposits biological data from or in a database, whether or not in an automated manner: 
+	Excellent. This was the premise of most projects for the traineeship. Scrape through raw data files and retrieve relevant data for DELPHI to store it and display it. 
+    - Develops new database structures to manage existing or acquired biological data: 
+	NA. A json file was generated and updated with timestamps of data acquisition, but this is hardly a database system. 
+    - Develops a (web) interface to process (biological complex) data in a user-friendly and efficient manner: 
+	Excellent. Setting up the views on DELPHI, developing a calculator app embedded into the page, using plotly to add some dynamic elements to plots.
+- LO4:
+    - Takes initiative to actively search and use new application possibilities in the field of bioinformatics: 
+	Excellent. I have looked for new python libraries and ways of processing and visualizing data during this traineeship.
+    - Expands his current knowledge of data structures and programming skills and autonomously adjusts contributing to a
+more efficient retrieval and processing of data for a given biological problem: 
+	Good. Not every library I have come across resulted in a contribution to the projects.
+    - Takes into account the legislation, regulations, (international) standards and values, and applies them in order to
+protect the data privacy: 
+	Good. At Aelin our Peptins(tm) are our greatest asset and therefore there is always an air of confidentiality around the company. Data processed only lives on the internal server here at the company. 
+- LO5:
+    - Critically evaluates the possibilities to analyse the given or acquired, whether or not in an automated manner,
+(biological) data: 
+	Good. I have tried out and compared different methods for the projects at times, but would need more experience in applying different methods to form my own insights. I did sometimes consult my colleagues on their opinions.
+    - Autonomously selects the appropriate software to process the given or acquired, whether or not in an automated
+manner, (biological) data: 
+	Good. I have written some code in javascript for the calculator tool, to allow for dynamic interactions with the user. I have also written some bash scripts to help with the data flow.
+- LO6:
+    - Combines multiple disciplines, but herby strictly holds to his own domain: 
+	Excellent. During the process of writing scripts to preprocess the data I have consulted the scientists working with the data for validation of my methods of analyzing and interpreting the raw data and gathering their feedback. 
+    - Analyses, synthesizes and harmonizes inferences from different disciplines up to a coherent and coordinated level: 
+	Excellent. The conclusion of (almost) each project is a pandas Dataframe containing all the elements calculated or extracted for a certain id of a sample/batch.
+- LO7:
+    - Reports results and information according to the standards valid in the work field: 
+	Excellent. I try to add plenty of comments to my code and use the commit messages in a clear and succinct way.
+    - Shows a participatory attitude towards the organisation and the team: 
+	Excellent. I prefer to share my work with colleagues and ask for their insights as there is always something to learn that way. I am also always happy to lend a hand where needed.
+
+**Reflection on international/intercultural aspects**
+
+Aelin is a company with many international colleagues. Official communication is always done in English: mail, Teams, documentation. 
+Inofficial communication is done in Dutch and French. There are only two sites at the present, both in Belgium: Ghent and Heverlee. 
+
 # Tasks <a name="tasks"></a>
 ## Exploration of raw data formats from HPLC instrument <a name="task1"></a>
 ### 01/02/2022: 
@@ -157,16 +220,16 @@ Script was appended with new methods and debugged to a workable state. More fine
 Using pandas to read the data from the xml-like files is memory intensive and requires changing some lines of code in the pandas library. Therefore a re-write of the code to use a personalized handler that only extracts the needed data from the xml file in one go is initiated.
 
 ### 24/02/2022:
-Finalizing the reader. Started linking the data to the Chromatogram class, which needs a rework to ift with the new structure.
+Finalizing the reader. Started linking the data to the Chromatogram class, which needs a rework to fit with the new structure.
 
 ### 01/03/2022: 
 Work on the HPLC data was shelved in favor for looking at the UPLC data.
 
 ## Deal with compressed .lcra raw HPLC files. <a name="task4"></a>
 ### 03/02/2022:
-Some .lcra files exported from the machine undergo a compression to reduce the impact fo their size on the system. 
+Some .lcra files exported from the machine undergo a compression to reduce the impact of their size on the system. 
 
-Finding a way to read these compressed files is needed to    visualize the chromatograms contained in them. No immediate settings were found to prevent this behaviour on the machine, so the company was contacted.
+Finding a way to read these compressed files is needed to visualize the chromatograms contained in them. No immediate settings were found to prevent this behaviour on the machine, so the company was contacted.
 
 Some settings in the data acquisition could help generate reports with the needed data. This should first be investigated, alternatively the data is compressed on sql level and the company providing the sql database could be contacted by the supplier of the instrument for further help.
 
@@ -207,6 +270,9 @@ A first exploratory visual analysis of the data reveals some differences between
 
 ### 22/02/2022:
 A second set of same sample readings was analyzed. Here the differences between both reading are normally distributed. A student t-test confirms that the difference between both datasets of the same sample is significant. Purities calculated by both methods for different samples show no significant difference accoring to a Wilcoxon's signed rank test.  
+
+### 01/03/2022:
+The measurements at 210 nm are selected as the absorbance there is of a greater intensity. Further analysis is put on hold.  
 
 ## Upload Ion Chromatography data to DELPHI platform <a name="task8"></a>
 
