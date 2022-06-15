@@ -36,8 +36,12 @@
 - HPLC vistor script -> Stopped
 - Upload of UPLC data -> Finished 21/03
 - Find a way to decompress .lcra files. -> Stopped
-- Increase robustness PDF generation -> Current Priority
-- Appending IC data to PDF generation -> Second priority; aim to finish in middle April
+- Increase robustness PDF generation -> Finished 24/03
+- Appending IC data to PDF generation -> Finished 07/04
+- Establish IC data as new cannonical type -> Finished 12/04
+- Membrane Assay Analysis -> Finished 31/05
+- Batch mass / volume calculator app -> Finished 29/04
+- Net Peptide Content Upload -> Finished 07/06
 
 
 ## Data Management <a name="TDP2"></a>
@@ -364,7 +368,7 @@ The code was refactored further and the data was linked to batches and vice vers
 
 The dashboard on the sandbox server was adapted to properly display the IC data in its new cannonical type (front end).  
 
-### 12/04:
+### 12/04/2022:
 
 The IC data standard curves were polished and a typo in the parameters of the script was corrected. The PDF layout was uniformized to have a more cohesive look and feel. A workflow was written for uploading the IC raw data to the ELN.
 
