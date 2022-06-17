@@ -10,7 +10,7 @@
 3. [Reflection and self-directed behaviour](#refl)  
     3.1 [Personal Development](#pers-dev)   
     3.2 [Formative evaluation](#from-ev)	
-    3.3 [Critical Reflection](#crit-refl)	
+    3.3 [Critical Reflection](#crit-refl)  	
 4. [Tasks](#tasks)  
     4.1. [✔️ Exploration of raw data formats from HPLC instrument](#task1)   
     4.2. [✔️ Download and install DELPHI repository](#task2)     
