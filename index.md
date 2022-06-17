@@ -6,11 +6,13 @@
     1.2. [Data Management](#TDP2)   
     1.3. [Traceability of Steps and Methods](#TDP3)  
     1.4. [Version Control of Code](#TDP4)   
+
 2. [Background information traineeship topic](#background)  
 3. [Reflection and self-directed behaviour](#refl)  
-    3.1 [Personal Development](#pers-dev)   
-    3.2 [Formative evaluation](#from-ev)	
-    3.3 [Critical Reflection](#crit-refl)  	
+	3.1 [Personal Development](#pers-dev)  
+	3.2 [Formative evaluation](#form-ev)  
+	3.3 [Critical Reflection](#crit-refl)
+	
 4. [Tasks](#tasks)  
     4.1. [✔️ Exploration of raw data formats from HPLC instrument](#task1)   
     4.2. [✔️ Download and install DELPHI repository](#task2)     
@@ -118,7 +120,7 @@ Feedback is given when needed or whenever I feel stuck with a certain problem by
 
 The script to automatically generate PDFs was completed and incorporated existing quality data and newly uplaoded IC and UPLC data. Discussions are in progress to even further expand this script to include more data, that still needs to be generated or uploaded to DELPHI. Furthermore a tool was written to utilize quality data and structural data of the compounds and batches to allow calculation of a more precise concentration of analyte. 
 
-## Formative Evaluation <a name="form-dev"></a>
+## Formative Evaluation <a name="form-ev"></a>
 
 **Feedback during traineeship**
 
