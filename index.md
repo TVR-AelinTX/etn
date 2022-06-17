@@ -9,8 +9,8 @@
 2. [Background information traineeship topic](#background)  
 3. [Reflection and self-directed behaviour](#refl)  
     3.1 [Personal Development](#pers-dev)   
-    3.2 [Formative evaluation](#from-ev)
-    3.3 [Critical Reflection](#crit-refl)
+    3.2 [Formative evaluation](#from-ev)	
+    3.3 [Critical Reflection](#crit-refl)	
 4. [Tasks](#tasks)  
     4.1. [✔️ Exploration of raw data formats from HPLC instrument](#task1)   
     4.2. [✔️ Download and install DELPHI repository](#task2)     
@@ -113,6 +113,10 @@ The different activities run in parallel as they're heavily intertwined and give
 **Nescessary support and facilities**
 
 Feedback is given when needed or whenever I feel stuck with a certain problem by the external coordinator. The course units of BIT provide support in handling issues (eg: Databases & Data Management, Python Scripting, Data Visualization).
+
+**Conclusion**
+
+The script to automatically generate PDFs was completed and incorporated existing quality data and newly uplaoded IC and UPLC data. Discussions are in progress to even further expand this script to include more data, that still needs to be generated or uploaded to DELPHI. Furthermore a tool was written to utilize quality data and structural data of the compounds and batches to allow calculation of a more precise concentration of analyte. 
 
 ## Formative Evaluation <a name="form-dev"></a>
 
